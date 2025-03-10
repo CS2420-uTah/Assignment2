@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     Matrix matrix1;
@@ -23,7 +25,7 @@ int main()
         }
     }
 
-    vec1.push_back({1, 2, 4});
+    // vec1.push_back({1, 2, 4});
     matrix1.setMatrix(vec1);
     matrix2.setMatrix(vec2);
 
@@ -71,4 +73,10 @@ int main()
         }
         std::cout << "\n";
     }
+
+    Matrix mat_sum;
+
+    mat_sum.setMatrix({{8, 5, 3}, {6, 7, 1}, {2, 4, 9}});
+
+    cout << mat_sum.digonalSum() << endl;
 }

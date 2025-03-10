@@ -89,8 +89,16 @@ Matrix Matrix::operator*(Matrix const &other)
 // A  method that adds  a diagonal elements of a square matrix
 float Matrix::digonalSum()
 {
-	// TODO:complete this method
-	// STUDENT
+	// vector<int> newRow;
+	int sum = 0;
+	int matRowSize = this->mat.size();
+	int matColumnSize = 0;
+
+	for (int i = 0; i < matRowSize; i++)
+	{
+		sum += this->mat[i][i];
+	}
+	return sum;
 }
 
 // operator(==) overloading method that checks the eqality of two matrices
