@@ -82,8 +82,29 @@ Matrix Matrix::operator-(Matrix const &other)
 Matrix Matrix::operator*(Matrix const &other)
 {
 
-	// TODO:complete this method
-	//
+	if (mat[0].size() != other.mat.size())
+	{
+		throw std::invalid_argument("Matrices dimensions are incompatible for multiplication");
+	}
+	else
+	{
+		Matrix result;
+		result.mat.resize(mat.size(), vector<int>(other.mat[0].size(), 0));
+
+		for (int i = 0; i < mat.size(); i++)
+		{
+			for (int j = 0; j < other.mat[0].size(); j++)
+			{
+				int sum = 0;
+				for (int k = 0; k < mat[0].size(); k++)
+				{
+					sum += mat[i][k] * other.mat[k][j];
+				}
+				result.mat[i][j] = sum;
+			}
+		}
+		return result;
+	}
 }
 
 // A  method that adds  a diagonal elements of a square matrix
@@ -96,6 +117,11 @@ float Matrix::digonalSum()
 
 	for (int i = 0; i < matRowSize; i++)
 	{
+		matColumnSize = this->mat[i].size();
+		if (matColumnSize != matRowSize)
+		{
+			throw invalid_argument("matrix not square");
+		}
 		sum += this->mat[i][i];
 	}
 	return sum;
